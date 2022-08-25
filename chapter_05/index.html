@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>숫자, 수학 메소드(Number, Math)</title>
+</head>
+<body>
+<script>
+let num1=5.1;
+let num2=5.7;
+
+console.log("Math.ceil(num1) : ", Math.ceil(num1));
+console.log("Math.ceil(num2) : ", Math.ceil(num2));
+// Math.ceil(num1) :  6
+// Math.ceil(num2) :  6
+
+console.log("Math.floor(num1) : ", Math.floor(num1));
+console.log("Math.floor(num2) : ", Math.floor(num2));
+// Math.floor(num1) :  5
+// Math.floor(num2) :  5
+
+console.log("Math.round(num1) : ", Math.round(num1));
+console.log("Math.round(num2) : ", Math.round(num2));
+// Math.round(num1) :  5
+// Math.round(num2) :  6
+
+
+//numObj.toFixed([소수 부분의 자릿수]);
+let numObj = 1.23456 
+
+console.log(numObj.toFixed()); // 결과: '1'
+console.log(numObj.toFixed(6)); // 결과: '1.234560'
+console.log(numObj.toFixed(3)); // 결과: '1.235'
+console.log(numObj.toFixed(1)); // 결과: '1.2'
+
+numObj = 0.0005678 
+console.log(numObj.toFixed()); // 결과: '0'
+console.log(numObj.toFixed(5)); // 결과: '0.00057'
+console.log(numObj.toFixed(3)); // 결과: '0.001'
+console.log(numObj.toFixed(1)); // 결과: '0.0'
+
+numObj = 12345.67 
+//console.log(numObj.toFixed(101)); // 결과: '오류'
+//파라 매터가 0과 100 사이의 값이 아니라면 Uncaught RangeError: toFixed() digits argument must be between 0 and 100라는 오류가 발생
+
+
+
+// isNaN() / 매개변수가 숫자인지 검사하는 함수
+// 123.123은 숫자이므로 false를 반환합니다.
+// '123.123'은 따옴표로 감쌌지만, 숫자로 취급하여 false를 반환합니다.
+// 'Not a Number'는 숫자가 아니므로 true를 반환합니다.
+// 123*123은 숫자이므로 false를 반환합니다.
+// '123*123'은 따옴표 안에 문자가 있으므로 숫자가 아닌 것으로 취급하여 true를 반환합니다.
+
+
+
+
+//parseInt()  
+//parseInt 는 숫자로 시작된 부부까지만 읽고 문자가 나오면 숫자만 반환, 문자로 시작되는 것은 읽지 못함
+let margin="100px";
+console.log("parseInt(margin) : ",parseInt(margin));
+console.log("Number(margin) : ",Number(margin));
+//parseInt(margin) :  10
+//Number(margin) :  NaN
+
+
+let redColor= 'f3';
+console.log("parseInt(redColor) : ",parseInt(redColor)); 
+//parseInt(redColor) :  NaN
+
+
+//parseInt 로  16진수 변환 방법
+let redColor2= 'f3';
+console.log("parseInt(redColor2,16) : ",parseInt(redColor2,16)); 
+//parseInt(redColor2,16) :  243
+
+console.log("parseInt('11',2) : ",parseInt('11',2)); 
+//parseInt('11',2) :  3
+
+//******** parseFloat() ****//
+let padding ='18.5%';
+console.log("parseInt(padding) : ",parseInt(padding)); 
+//parseInt(padding) :  18
+
+console.log("parseFloat(padding) : ",parseFloat(padding)); 
+//parseFloat(padding) :  18.5
+
+
+//******* Math.random();
+//1~100 사이 임의의 숫자를 뽑고 싶다면?
+Math.floor(Math.random()*100)+1
+
+
+//Math.max() ; Math.min();
+Math.max(1,4,-1,5,10,9,5.54);  //10
+Math.min(1,4,-1,5,10,9,5.54);   //-1
+
+//Math.abs();  //절대값
+Math.abs(-1); //1
+
+//Math.pow(n,m);//제곱
+
+//Math.sqrt()//제곱근
+console.log("Math.sqrt() : " , Math.sqrt(16));
+//Math.sqrt() :  4
+
+
+</script>
+</body>
+</html>
