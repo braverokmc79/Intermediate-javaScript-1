@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3 .객체 메소드(Object methods), 계산된 프로퍼티(Computed property)</title>
+</head>
+<body>
+<script>
+
+let n ="name";
+let a ="age";
+
+const user ={
+    [n]:"Mike",
+    [a]:30,
+    //[1+4]:5
+};
+console.log(user);
+//출력
+//{5: 5, name: 'Mike', age: 30}
+
+function makeObj(key, val){
+    return {
+        [key] :val
+    }
+}
+
+const obj =makeObj("나이", 33);
+console.log(obj);
+//{나이: 33}
+
+
+
+//**** 객체 복사 : Object.assign   ******
+const user2=user;
+const user3 =Object.assign({}, user);
+console.log("객체 복사 Object.assign  : " , user3);
+console.log("얕은복사 :",user2===user, "깊은 복사 :",  user3===user);
+//객체 복사 Object.assign  :  {name: 'Mike', age: 30}
+//얕은복사 : true 깊은 복사 : false
+
+
+
+//******객체 키값만 반환: Object.keys *********
+const result =Object.keys(user);
+console.log(result);
+//['name', 'age']
+
+
+//******객체 값만 반환: Object.keys *********
+const valueResult =Object.values(user);
+console.log(valueResult);
+//['Mike', 30]
+
+
+
+
+//******객체 키와 값 반환: Object.entries *********
+//Object.entries 객체를 배열로 반환처리
+const keyValueResult=Object.entries(user);
+console.log(keyValueResult);
+
+// [Array(2), Array(2)]
+// ['name', 'Mike']
+// ['age', 30]
+// length: 2
+
+console.log(keyValueResult[0]);
+// ['name', 'Mike']
+
+
+
+
+
+// 배열을 객체로 변환 처리
+//**** Object.fromEntries() 는 Object.entries() 의 역을 수행
+let arr =[
+    ["mon","월"],
+    ["tue","화"]
+]
+const resultArr=Object.fromEntries(arr);
+console.log(" resultArr  : ",resultArr);
+//resultArr  :  {mon: '월', tue: '화'}
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>
