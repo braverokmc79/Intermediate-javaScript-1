@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>문자열 메소드(String methods)</title>
+</head>
+<body>
+<script>
+let list=[
+    "01. 들어가며",
+    "02. JS의 역사",
+    "03. 자료형",
+    "04. 함수",
+    "05. 배열"
+]    
+let newList =[];
+for(let i=0; i<list.length; i++){
+    newList.push(list[i].slice(4));
+}
+console.log("newList : ",newList);
+//newList :  (5) ['들어가며', 'JS의 역사', '자료형', '함수', '배열']
+
+
+
+//금칙어 :콜라
+function hasCola(str){
+    console.log(str.indexOf('콜라'));
+    if(str.indexOf('콜라')){        
+        console.log("금칙어가 있습니다.");
+    }else{
+        console.log("통과");
+    }
+}
+
+hasCola("와 사이다가 짱이야!"); //-1
+hasCola("무슨소리, 콜라가  최고"); //6
+hasCola("콜라"); //0
+//결과 오류=>
+// 금칙어가 있습니다.
+// 금칙어가 있습니다.
+// 통과
+
+
+
+//===>첫번째 단어에서 존재할 경우 0 따라서, >-1 클경우
+function hasCola2(str){
+    if(str.indexOf('콜라')>-1){
+        console.log("금칙어가 있습니다.");
+    }else{
+        console.log("통과");
+    }
+}
+
+hasCola2("와 사이다가 짱이야!"); //-1
+hasCola2("무슨소리, 콜라가  최고"); //6
+hasCola2("콜라"); //0
+// 통과
+// 금칙어가 있습니다.
+// 금칙어가 있습니다.
+
+
+//**********************
+//***  includes()  문자가 존재 여부만 확인
+function hasCola3(str){
+     console.log("str.includes('콜라')" ,str.includes('콜라'));
+    if(str.includes('콜라')){
+        console.log("금칙어가 있습니다.");
+    }else{
+        console.log("통과");
+    }
+}
+hasCola3("와 사이다가 짱이야!"); //
+hasCola3("무슨소리, 콜라가  최고"); //
+hasCola3("콜라"); //
+// str.includes('콜라') false
+// 통과
+// str.includes('콜라') true
+// 금칙어가 있습니다.
+// str.includes('콜라') true
+// 금칙어가 있습니다.
+
+</script>    
+</body>
+</html>
