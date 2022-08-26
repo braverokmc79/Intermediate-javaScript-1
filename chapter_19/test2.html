@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ES2021 자바스크립트에 추가된 새로운 기능들을 알아보자!</title>
+</head>
+<body>
+<script>
+function add1(num1, num2){    
+    console.log(num1 +num2);
+}
+add1(1);
+//NaN
+
+function add2(um1, num2){
+    num1 ||=0;
+    num2 ||=0;
+    console.log(num1 +num2);
+}
+add2(1);
+//출력 
+//1
+
+/*******************************
+|| : 앞의 값이 falsy 이면 뒤의 값
+??: 앞의 값이 null 이나 undefined 이면 뒤의 값
+*******************************/
+let num =0;
+let a =num || 3;
+//a
+//3
+
+
+let b=num ?? 3;
+//b
+//0  =>num 인 0이 찍힘
+//null undefined
+
+
+/*******************************
+숫자 단위 _ 사용가능 가독성 효과
+*******************************/
+let billion=1_000_000_000
+
+
+</script> 
+</body>
+</html>

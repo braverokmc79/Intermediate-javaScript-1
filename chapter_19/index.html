@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ES2021 자바스크립트에 추가된 새로운 기능들을 알아보자!</title>
+</head>
+<body>
+<script>
+/*******************************
+ String.replaceAll
+*******************************/
+
+const str1 ="Hello World";
+//console.log(str1.replace(/l/g,"~"));
+console.log(str1.replaceAll("l","~"));
+
+const str2="I'm  [Mike]. This is Tom's [Car].";
+console.log(str2.replaceAll("[","~").replaceAll("]","~") );
+console.log(str2.replace(/\[/g,"~").replace(/\]/g,"~") );
+</script> 
+</body>
+</html>

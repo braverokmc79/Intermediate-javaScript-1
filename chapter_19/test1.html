@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ES2021 자바스크립트에 추가된 새로운 기능들을 알아보자!</title>
+</head>
+<body>
+<script>
+/*******************************
+ * 
+ Promise.any 추가됨
+
+Promise.race:
+:프로미스중에 가장 먼저 완료된 결과값으로 이행/거부
+
+
+Promise.any 
+:프로미스 중에 가장 먼저 이행된 객체 반환
+*******************************/
+
+const rejPromise=new Promise((res, rej)=>{
+    setTimeout(()=>{
+        rej("fail....");
+    },1000);
+});
+
+const resPromise=new Promise((res, rej)=>{
+    setTimeout(()=>{
+        res("sucdess");
+    }, 2000);
+});
+
+
+Promise.race([rejPromise, resPromise])
+.then(()=>console.log("race 성공"))
+.catch(error=>console.error("에러:",error));
+
+
+Promise.any([rejPromise, resPromise])
+.then(()=>console.log("any 성공"))
+.catch(error=>console.error("에러:",error));
+
+//Promise.any 모두 거부시 다음과 같은 에러
+//에러: AggregateError: All promises were rejected
+
+</script> 
+</body>
+</html>
