@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>프로미스(Promise)</title>
+</head>
+<body>
+<script>
+//Promise    
+const f1=(message)=>{
+    console.log("f1 :", message);
+    return new Promise((res, rej)=>{
+        setTimeout(function(){
+            res("1번 주문 완료");
+        }, 1000);
+    })
+}   
+
+const f2=(message)=>{
+    console.log("f2 :", message);
+    return new Promise((res, rej)=>{
+        setTimeout(function(){
+            res("2번 주문 완료");
+            // rej("xxx");
+        }, 3000);
+    })
+}   
+
+
+const f3=(message)=>{
+    console.log("f3 :", message);
+    return new Promise((res, rej)=>{
+        setTimeout(function(){
+            res("3번 주문 완료");
+        }, 2000);
+    })
+}    
+
+/**********************************
+ * Promise  
+ *********************************/
+//프로미스 체이닝 (Promiss chaining)
+//다음 방식 결과:6~7초
+//작동은 느리나 오류 발생시 해당 부분만 건너띄고 실행
+console.log("시작");
+console.time("시작");
+f1()
+.then(res=>f2(res))
+.then(res=>f3(res))
+.then(res=>console.log(res))
+.catch(error=>console.error("에러 :", error))
+.finally(()=>{
+    console.log("끝");
+    console.timeEnd("시작");
+});
+//정상 작동 출력=>
+// 시작
+// f1 : undefined
+// f2 : 1번 주문 완료
+// f3 : 2번 주문 완료
+// 3번 주문 완료
+// 끝
+
+
+
+
+/**********************************
+ * Promise.all  배열로 받는다.
+ *********************************/
+//다음 방식 결과 :3초
+//작동 시간은 빠르나 오류발생시 페이지전체 오류발생 - 다보여주거나 아예 안보여 주거나
+console.time("x");
+Promise.all([f1(), f2(), f3()]).then((res)=>{
+    console.log(res);
+    console.timeEnd("x");
+})
+//출력 결과
+// f1 : undefined
+// f2 : undefined
+// f3 : undefined
+// (3) ['1번 주문 완료', '2번 주문 완료', '3번 주문 완료']
+
+
+
+/**********************************
+ * Promise.race  배열로 받는다.
+ * all은 모든 작업이 완료될때까지 기다리지만,
+ * race 는 말 그대로 경주라 하나라도 완료되면 끝난다.
+ *********************************/
+console.time("y");
+Promise.race([f1(), f2(), f3()]).then((res)=>{
+    console.log(res);
+    console.timeEnd("y");
+})
+
+
+</script>    
+</body>
+</html>
