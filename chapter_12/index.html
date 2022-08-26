@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>setTimeout / setInterval</title>
+</head>
+<body>
+<script>
+function fn(){
+    console.log(3);
+}    
+setTimeout(fn, 3000);
+
+
+//setInterval, clearInterval
+let num=0;
+
+function showTime(){
+    console.log(`안녕하세요. 접속하신지 ${num++}초가 지났습니다.`);
+    if(num>5){
+        clearInterval(tId);
+    }
+}
+const tId=setInterval(showTime, 1000);
+
+
+// 안녕하세요. 접속하신지 0초가 지났습니다.
+// 안녕하세요. 접속하신지 1초가 지났습니다.
+// 3
+// 안녕하세요. 접속하신지 2초가 지났습니다.
+// 안녕하세요. 접속하신지 3초가 지났습니다.
+// 안녕하세요. 접속하신지 4초가 지났습니다.
+// 안녕하세요. 접속하신지 5초가 지났습니다.
+</script>    
+</body>
+</html>
