@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>call, apply, bind</title>
+</head>
+<body>
+<script>
+
+const nums =[3,10,1,6,4];
+// const minNum=Math.min(...nums);
+// const maxNum=Math.max(...nums);
+
+
+const minNum=Math.min.apply(null,nums);
+//const minNum=Math.min.call(null, ...nums);
+
+//const maxNum=Math.max.apply(null,nums);
+const maxNum=Math.max.call(null, ...nums);
+
+
+console.log(minNum); //1
+console.log(maxNum);//10
+
+
+
+
+
+/**************************************************
+ * call
+ * call 메서드는 모든 함수에서 사용할 수 있으며, 
+ * this를 특정값으로 지정할 수 있습니다.
+***************************************************/
+const mike={
+    name:"Mike",
+}    
+const tom={
+    name:"Tome",
+}
+function showThisName(){
+    console.log(this.name);
+}
+
+showThisName();
+showThisName.call(mike);
+showThisName.call(tom);
+
+
+function update(birthYear, occupation){
+    this.birthYear=birthYear;
+    this.occupation=occupation;
+}
+
+update.call(mike, 1999, "singer");
+console.log(mike);
+
+update.call(tom, 2002, "teacher");
+console.log(tom);
+// {name: 'Mike', birthYear: 1999, occupation: 'singer'}
+// {name: 'Tome', birthYear: 2002, occupation: 'teacher'}
+
+
+
+
+/********************************************************************************************************
+ * apply
+ * apply는 함수 매개변수를 처리하는 방법을 제외하면 call과 완전히 같습니다.
+ * call은 일반적인 함수와 마찬가지로 매개변수를 직접 받지만, apply 는 매개변수를 배열로 받습니다.
+*******************************************************************************************************/
+update.apply(mike, [1999, "singer"]);
+console.log(mike);
+
+update.apply(tom, [2002, "teacher"]);
+console.log(tom);
+// {name: 'Mike', birthYear: 1999, occupation: 'singer'}
+// {name: 'Tome', birthYear: 2002, occupation: 'teacher'}
+
+
+
+
+/********************************************************************************************************
+ * bind
+ * 함수의 this값을 영구히 바꾸수 있습니다.
+*******************************************************************************************************/
+
+const updateMike=update.bind(mike);
+updateMike(1960, "police");
+console.log("mike  : " ,mike);
+
+
+const user={
+    name:"Mike",
+    showName:function(){
+        console.log(`hello,${this.name} `);
+    }
+}
+user.showName();
+let fn=user.showName;
+fn();
+// hello,Mike 
+// hello, 
+
+//fn() 할당할때 this 잃어 버림
+
+fn.call(user);
+fn.apply(user);
+
+
+
+let boundFn =fn.bind(user);
+console.log("boundFn:==> ");
+boundFn();
+
+</script>    
+</body>
+</html>
