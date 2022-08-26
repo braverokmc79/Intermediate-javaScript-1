@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>상속, 프로토타입(Prototype)</title>
+</head>
+<body>
+<script>
+
+const car ={
+    wheels:4,
+    drive(){
+        console.log("drive...");
+    }
+}
+
+const bmw={
+    color:"red",
+    navigation:1,
+};
+
+
+const benz={
+    color:"black",
+};
+
+const audi={
+    color:"blue",
+};
+
+bmw.__proto__=car;
+
+const x5={
+    color:"white",
+    name:"x5"
+}
+
+x5.__proto__=bmw;
+
+
+// benz.__proto__=car;
+// audi.__proto__=car;
+
+// const car2={
+//     wheels:4,
+//     drive(){
+//         console.log("drive.... ");
+//     }
+// }
+
+const Bmw2=function(color){
+    this.color=color;
+}
+
+Bmw2.prototype.wheels=2;
+Bmw2.prototype.drive=function(){
+      console.log("drive.... ");
+}
+
+Bmw2.prototype.navigation=1;
+Bmw2.prototype.stop=function(){
+    console.log("STOP!");
+}
+
+const x6=new Bmw2("red");
+const z5=new Bmw2("blue");
+
+// x5.__proto__=car2;
+// z4.__proto__=car2;
+
+</script>    
+</body>
+</html>
