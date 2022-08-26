@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>배열 메소드1(Array methods)</title>
+</head>
+<body>
+<script>
+const fruits = ['수박', '바나나', '망고', '두리안'];
+const removed = fruits.splice(2, 0, '딸기', '사과');
+console.log(fruits);
+// ['수박', '바나나', '딸기', '사과', '망고', '두리안'];
+console.log(removed);
+
+
+///****   forEach  
+const myArr = ["가", "나", "다", "라", "마"];
+myArr.forEach((currentElement, index, array) => {
+    console.log(`요소: ${currentElement}`  , `index: ${index}`,  array);    
+});
+// 요소: 가 index: 0 (5) ['가', '나', '다', '라', '마']
+// 요소: 나 index: 1 (5) ['가', '나', '다', '라', '마']
+// 요소: 다 index: 2 (5) ['가', '나', '다', '라', '마']
+// 요소: 라 index: 3 (5) ['가', '나', '다', '라', '마']
+// 요소: 마 index: 4 (5) ['가', '나', '다', '라', '마']
+
+
+
+let arr=["Mike","Tom","Jane"];
+arr.forEach((name, index)=>{
+    console.log(`index(${index}) , name :${name}`);
+})
+// index(0) , name :Mike
+// index(1) , name :Tom
+// index(2) , name :Jane
+
+
+
+//find true 이면 멈추고 반환처리한다.
+let arr2 =[1,2,3,4,5,6];
+const result=arr2.find((item)=>{
+    return item %2 ===0;
+});
+console.log("find result :", result);
+//find result : 2
+
+
+let userList=[
+    {name:"Mike",age:30},
+    {name:"Jane",age:27},
+    {name:"Tom",age:10},
+]
+const result2=userList.find((user)=>{
+    if(user.age>19){
+        return true;
+    }
+    return false;  
+});
+
+console.log("find result2 :", result2);
+//find result2 : {name: 'Mike', age: 30}
+
+
+//********  findIndex  인덱스값 반환
+const result3=userList.findIndex((user)=>{
+    if(user.age>19){
+        return true;
+    }
+    return false;  
+});
+
+console.log("findIndex result3 :", result3);
+//findIndex result3 : 0
+
+
+
+//** arr.filter(fn);
+//만족하는 모든 요소를 배열로 반환
+
+
+//map  가공해서 값 반환
+let newUserList =userList.map((user, index)=>{
+    return Object.assign({}, user, 
+        {
+            isAdult:user.age>19
+        }
+    );
+})
+console.log("map newUserList : ", newUserList);
+// {name: 'Mike', age: 30, isAdult: true}
+// {name: 'Jane', age: 27, isAdult: true}
+// {name: 'Tom', age: 10, isAdult: false}
+
+
+/// join 공백이면  , 콤마 삽입
+let arr3=["안녕", "나는", "철수야!"];
+let result4 =arr.join("-");
+console.log("join result4 :" ,result4);
+//join result4  : Mike-Tom-Jane
+
+
+</script>    
+</body>
+</html>
