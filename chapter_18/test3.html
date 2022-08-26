@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generator</title>
+</head>
+<body>
+<script>
+/**************************************************** 
+ * Generator
+* yield* 을 이용
+ * *************************************************/ 
+function* gen1(){
+    yield "W";
+    yield "o";
+    yield "r";
+    yield "l";
+    yield "d";
+}
+function* gen2(){
+    yield "Hello,";
+    yield* gen1();
+    yield "!";
+}
+</script>    
+</body>
+</html>

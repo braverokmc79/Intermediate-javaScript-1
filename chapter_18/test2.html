@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generator</title>
+</head>
+<body>
+<script>
+/**************************************************** 
+ * Generator
+* 값을 미리 만들어 두지 않음.
+ * *************************************************/ 
+function* fn(){
+   let index=0;
+   while(true){
+        yield index++;
+   }
+}    
+const a=fn();
+</script>  
+</body>
+</html>

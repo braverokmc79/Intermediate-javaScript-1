@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generator</title>
+</head>
+<body>
+<script>
+/***************************************************
+ * Symbol이란?
+   Symbol이란 객체에 Unique한 속성을 만들기 위해 사용됩니다.
+  왜 Unique가 필요하냐면 다른 라이브러리와의 충돌을 막기 위함입니다.
+  Symbol.iterator는 상용심볼로써 이터러블한 객체를 정의하기 위한 심볼입니다.
+
+
+   iterable (반복 가능한)이란 무엇일까요?
+   Symbol.iterator심볼을 속성으로 가지고 있고, iterator 객체를 반환하는 객체를 뜻합니다.
+
+  iterator (반복자)란 무엇일까요?
+  iterable 객체가 [Symbol.iterator]() 메소드로 반환하는 이터레이터 객체는 무엇일까요?
+   next메소드를 구현하고 있고, done과 value 속성을 가진 객체를 반환하는 객체를 말합니다.
+ 
+ * *************************************************/    
+  
+
+ /****************************************************
+***************************************************** 
+ * Generator
+ * 제너레이터는 다른 작업을 하다가 다시 돌아와서
+ * next() 해주면 진행이 멈췄던 부분 이어서 실행 
+ *
+ * ex) Redux Saga
+ * 
+ * 함수의 실행을 중간에 멈췄다가 재개할 수 있는 기능
+ * next(), return(), throw()
+ * 
+ * iterable
+ * -Symbol.iterator 메서드가 있다.
+ * -Symbol.iterator 는 iterator 를 반환해야 한다.
+ * 
+ * iterator
+ * - next 메서드를 가진다.
+ * - next 메서드는 value 와 done 속성를 가진 객체를 반환한다.
+ * - 작업이 끝나면 done 은 true 가 된다.
+ * 
+ * *************************************************/    
+function* fn(){
+    try {
+        console.log(1);
+        yield 1;
+        console.log(2);
+        yield 2;
+        console.log(3);
+        console.log(4);
+        yield 3;
+        return "finish";        
+    } catch (error) {
+        console.error("에러 :", error);
+    }
+
+}    
+const a =fn();
+
+//실행  가장 가까운 yield 문을 만날때까지 실행
+//a.next();
+console.log(a.next());
+//{value: 1, done: false}
+
+
+
+
+</script>    
+</body>
+</html>
